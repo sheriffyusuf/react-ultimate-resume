@@ -47,7 +47,6 @@ const DEFAULT_OPTIONS = Object.freeze({
             alt: 'Default Banner'
         }
     },
-    maxCardsPerRow: null,
     showContactInfos: false,
     dismissFooter: false
 });
@@ -95,9 +94,7 @@ const DeveloperProfileComponent = ({
             receivedGlobalClasses,
             customization: options?.customization,
             options: {
-                showContactInfos: options?.showContactInfos,
-                maxSkills: options?.maxSkills,
-                disableSortableExperience: options?.disableSortableExperience
+                showContactInfos: options?.showContactInfos
             }
         }),
         [apiKeys, endpoints, additionalNodes, receivedGlobalClasses, JSON.stringify(options?.customization)]
@@ -130,11 +127,7 @@ const DeveloperProfileComponent = ({
                             onCustomizationChanged={onCustomizationChanged}
                         />
                         {additionalNodes?.beforeCards}
-                        <Cards
-                            cardsOrder={options.customization?.cardsOrder}
-                            maxCardsPerRow={options?.maxCardsPerRow}
-                            side={side}
-                        />
+                        <Cards cardsOrder={options.customization?.cardsOrder} side={side} />
                         {!options.dismissFooter && <Footer />}
                     </DeveloperProfileContext.Provider>
                 </StoreContext.Provider>

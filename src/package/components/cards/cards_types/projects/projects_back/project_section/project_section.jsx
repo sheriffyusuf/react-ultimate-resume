@@ -21,7 +21,6 @@ import { useCallbackOpen } from '../../../../../hooks/use_callback_open';
 import { styles } from './project_section_styles';
 import { useCardVariant } from '../../../../../hooks/profile_card_hooks/use_card_variant';
 import { getColorsFromCardVariant } from '../../../../../../utils/styles/styles_utils';
-import { HttpRegex } from '../../data/validator';
 
 const useStyles = createUseStyles(styles);
 
@@ -58,21 +57,12 @@ const Details = ({ project, index, onDelete, classes }) => {
 
     const color = getColorsFromCardVariant(theme, variant).backColor;
 
-    const projectLink = project.link;
-
-    const link = useMemo(() => {
-        if (!new RegExp(HttpRegex).test(projectLink)) {
-            return `http://${projectLink}`;
-        }
-        return projectLink;
-    }, [projectLink]);
-
     return (
         <div className={classes.details}>
             {project.link && (
                 <div className={classes.detail}>
                     <AnimatedUnderlinedButton color={color}>
-                        <a className={classes.link} href={link}>
+                        <a className={classes.link} href={project.link}>
                             <LinkIcon className={classes.detailIcon} />
                             <Typography customClasses={{ container: classes.detailTypography }} color="primary">
                                 <FormattedMessage id="Project.section.link" defaultMessage="Link" />

@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
 
 import { Button, Card, PopperCardActions, TextField, Typography } from '@welovedevs/ui';
@@ -7,7 +7,6 @@ import { Button, Card, PopperCardActions, TextField, Typography } from '@weloved
 import { BouncingRoundButton } from '../../../../../../commons/bouncing_round_button/bouncing_round_button';
 
 import { styles } from './gif_card_styles';
-import { translations } from './gif_card_translations';
 
 const useStyles = createUseStyles(styles);
 
@@ -22,7 +21,6 @@ const GifCardComponent = ({
     error
 }) => {
     const classes = useStyles();
-    const { formatMessage } = useIntl();
 
     const [input, setInput] = useState(name);
 
@@ -46,7 +44,7 @@ const GifCardComponent = ({
                                 title={
                                     <FormattedMessage
                                         id="GifsEditDialog.gifCard.changeGif"
-                                        defaultMessage="Update this gif"
+                                        defaultMessage="Changer this gif"
                                     />
                                 }
                                 onClick={onImageEditClick}
@@ -66,7 +64,7 @@ const GifCardComponent = ({
                     <TextField
                         customClasses={{ container: classes.textField }}
                         fullWidth
-                        placeholder={formatMessage(translations.hobbiesNamePlaceholder)}
+                        placeholder="Gif's name"
                         variant="flat"
                         value={input}
                         onChange={handleTextFieldChange}
