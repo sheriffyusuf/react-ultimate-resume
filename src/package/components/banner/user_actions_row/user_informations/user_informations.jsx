@@ -24,6 +24,7 @@ export const UserInformations = () => {
     const [additionalNodes] = useAdditionalNodes('banner.userInformations', null);
     const [isEditing] = useIsEditing();
     const [showContactInformations] = useOptions('showContactInfos', false);
+    console.log({ showContactInformations });
     const contactInformations = useMemo(
         () =>
             Object.entries(CONTACT_INFOS_DATA).reduce(

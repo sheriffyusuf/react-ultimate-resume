@@ -12,18 +12,13 @@ import { ProfileCardEditButton } from './profile_card_edit_button/profile_card_e
 import { ProfileCardEditDialog } from './profile_card_edit_dialog/profile_card_edit_dialog';
 import { ProfileCardIncompletePopper } from './profile_card_incomplete_popper/profile_card_incomplete_popper';
 
-import {
-    SET_CHANGING_SIDES,
-    SET_IS_EDITING,
-    SET_SIDE,
-    SET_VARIANT
-} from '../../../store/profile_card/profile_card_actions_types';
+import { SET_CHANGING_SIDES, SET_SIDE, SET_VARIANT } from '../../../store/profile_card/profile_card_actions_types';
 import { getProfileCardInitialState, profileCardReducer } from '../../../store/profile_card/profile_card_reducer';
-import { DeveloperProfileContext } from '../../../utils/context/contexts';
-import { PROFILE_CARD_EDIT_BUTTON_TRANSITIONS_SPRING_PROPS } from './profile_card_spring_props';
-import { SIDES } from './profile_card_side/side';
 
 import { styles } from './profile_card_styles';
+import { PROFILE_CARD_EDIT_BUTTON_TRANSITIONS_SPRING_PROPS } from './profile_card_spring_props';
+import { SIDES } from './profile_card_side/side';
+import { DeveloperProfileContext } from '../../../utils/context/contexts';
 
 const useStyles = createUseStyles(styles);
 
@@ -74,8 +69,7 @@ const ProfileCardComponent = ({
     const [state, dispatch] = useReducer(profileCardReducer, {}, () =>
         getProfileCardInitialState({
             variant,
-            side: sideProps || SIDES.FRONT,
-            isEditing: isEditingProfile
+            side: sideProps || SIDES.FRONT
         })
     );
     const { side, hasDialogOpened } = state;
@@ -86,14 +80,6 @@ const ProfileCardComponent = ({
             variant
         });
     }, [variant]);
-
-    useEffect(() => {
-        dispatch({
-            type: SET_IS_EDITING,
-            value: isEditingProfile
-        });
-    }, [isEditingProfile]);
-
     useEffect(() => {
         if (sideProps === side) {
             return;

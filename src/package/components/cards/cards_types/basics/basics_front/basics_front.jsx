@@ -71,7 +71,7 @@ const BasicsFrontComponent = ({ data, handleAddButtonClick }) => {
                             classes={{ container: classes.location }}
                         >
                             <LocationIcon className={classes.locationIcon} />
-                            {currentCityName}
+                            {data?.currentCity?.name}
                         </ProfileCardFrontTypography>
                     )}
                 </div>

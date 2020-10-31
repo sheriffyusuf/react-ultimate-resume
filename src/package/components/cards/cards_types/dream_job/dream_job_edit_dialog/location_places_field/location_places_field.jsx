@@ -37,9 +37,7 @@ const SortableTag = SortableElement(({ onRemove, item, style }) => {
             }}
         >
             <DragHandle classes={classes} />
-            <Tooltip
-                title={<FormattedMessage id="DreamJob.editDialog.location.delete" defaultMessage="Delete this place" />}
-            >
+            <Tooltip title="Delete this place">
                 <button type="button" onClick={onRemove}>
                     <TrashIcon className={classes.deleteIcon} />
                 </button>

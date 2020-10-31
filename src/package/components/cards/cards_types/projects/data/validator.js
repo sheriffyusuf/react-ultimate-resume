@@ -1,8 +1,6 @@
 import * as Yup from 'yup';
 import { validationTranslations } from '../../../../../utils/validation_translations';
 
-export const HttpRegex = /^(?:f|ht)tps?:\/\//;
-
 export const ProjectValidator = (formatMessage) =>
     Yup.object().shape({
         name: Yup.string()
@@ -14,12 +12,9 @@ export const ProjectValidator = (formatMessage) =>
         date: Yup.object().nullable().required(formatMessage(validationTranslations.required)),
         images: Yup.array().of(
             Yup.object().shape({
-                url: Yup.string()
-                    .required(formatMessage(validationTranslations.required))
-                    .url(formatMessage(validationTranslations.url))
+                url: Yup.string().required(formatMessage(validationTranslations.required)).url()
             })
-        ),
-        link: Yup.string().nullable().url(formatMessage(validationTranslations.url))
+        )
     });
 
 export const validateProjectsComplete = (data) => {

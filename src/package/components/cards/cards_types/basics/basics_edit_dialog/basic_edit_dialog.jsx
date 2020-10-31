@@ -41,8 +41,7 @@ const Content = ({ helpers: { handleValueChange, toggleValue } }) => {
     const { values, errors, handleChange } = useFormikContext();
     const {
         currentCity,
-        codeExperienceYears,
-        otherExperienceYears,
+        experienceYears,
         studiesLevel,
         codingYears,
         codingReason,
@@ -150,7 +149,6 @@ const Content = ({ helpers: { handleValueChange, toggleValue } }) => {
                         color="primary"
                         name="codingYears"
                         value={codingYears}
-                        step={0.5}
                         onChange={handleChange}
                         min={0}
                         max={20}
@@ -206,17 +204,17 @@ const Content = ({ helpers: { handleValueChange, toggleValue } }) => {
                 </div>
             </EditDialogField>
             <EditDialogField
-                error={errors.codeExperienceYears}
+                error={errors.experienceYears}
                 title={
                     <FormattedMessage
-                        id="Basics.editDialog.codeExperienceYears.title"
-                        defaultMessage="How many years of professional experience as a developer do you have?"
+                        id="Basics.editDialog.experienceYears.title"
+                        defaultMessage="How many years of professional experience do you have?"
                     />
                 }
                 subtitle={
                     <FormattedMessage
-                        id="Basics.editDialog.codeExperienceYears.subtitle"
-                        defaultMessage="Tech experiences"
+                        id="Basics.editDialog.experienceYears.subtitle"
+                        defaultMessage="Tech and non-tech experiences"
                     />
                 }
             >
@@ -226,62 +224,18 @@ const Content = ({ helpers: { handleValueChange, toggleValue } }) => {
                             id="Main.lang.years"
                             defaultMessage="{countNode} year{count, plural, one {} other {s}}"
                             values={{
-                                count: codeExperienceYears,
-                                countNode: <span className={classes.bolden}>{codeExperienceYears}</span>
+                                count: experienceYears,
+                                countNode: <span className={classes.bolden}>{experienceYears}</span>
                             }}
                         />
                     </Typography>
                     <SliderWithPopper
                         color="primary"
-                        name="codeExperienceYears"
-                        value={codeExperienceYears}
+                        name="experienceYears"
+                        value={experienceYears}
                         onChange={handleChange}
                         min={0}
                         max={20}
-                        step={0.5}
-                        popperCardProps={{
-                            customClasses: {
-                                container: classes.sliderPopperCard,
-                                arrowContainer: classes.sliderPopperCardArrowContainer
-                            }
-                        }}
-                    />
-                </div>
-            </EditDialogField>
-            <EditDialogField
-                error={errors.otherExperienceYears}
-                title={
-                    <FormattedMessage
-                        id="Basics.editDialog.otherExperienceYears.title"
-                        defaultMessage="How many years of other professional experience do you have?"
-                    />
-                }
-                subtitle={
-                    <FormattedMessage
-                        id="Basics.editDialog.otherExperienceYears.subtitle"
-                        defaultMessage="Non-tech experiences"
-                    />
-                }
-            >
-                <div className={classes.valueSliderContainer}>
-                    <Typography className={classes.sliderValue}>
-                        <FormattedMessage
-                            id="Main.lang.years"
-                            defaultMessage="{countNode} year{count, plural, one {} other {s}}"
-                            values={{
-                                count: otherExperienceYears,
-                                countNode: <span className={classes.bolden}>{otherExperienceYears}</span>
-                            }}
-                        />
-                    </Typography>
-                    <SliderWithPopper
-                        color="primary"
-                        name="otherExperienceYears"
-                        value={otherExperienceYears}
-                        onChange={handleChange}
-                        min={0}
-                        max={20}
-                        step={0.5}
                         popperCardProps={{
                             customClasses: {
                                 container: classes.sliderPopperCard,
